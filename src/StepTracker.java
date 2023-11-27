@@ -40,7 +40,6 @@ class StepTracker {
         } catch (InputMismatchException e) {
             scanner.next();
             System.out.println("Введите пожалуйста цифры.");
-            return;
         }
     }
 
@@ -56,7 +55,6 @@ class StepTracker {
         } catch (InputMismatchException e) {
             scanner.next();
             System.out.println("Введите пожалуйста цифры.");
-            return;
         }
     }
 
