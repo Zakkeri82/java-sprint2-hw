@@ -3,9 +3,13 @@ import java.util.Scanner;
 
 class StepTracker {
     Scanner scanner;
+
     Converter converter = new Converter();
+
     MonthData[] monthToData = new MonthData[12];
+
     int goalByStepsPerDay;
+
 
     StepTracker(Scanner scan) {
         scanner = scan;
