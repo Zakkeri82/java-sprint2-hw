@@ -4,11 +4,11 @@ public class Converter {
 
     private static final double RATIO_CALORIES = 0.0001;
 
-    public static int convertToKm(int steps) {
+    static int convertToKm(int steps) {
         return (int) (steps * 75 * RATIO_KM);
     }
 
-    public static int convertStepsToKilocalories(int steps) {
+    static int convertStepsToKilocalories(int steps) {
         return (int) (steps * 50 * RATIO_CALORIES);
     }
 }

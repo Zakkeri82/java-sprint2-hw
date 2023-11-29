@@ -18,62 +18,89 @@ class StepTracker {
     }
 
     void addNewNumberStepsPerDay() {
+        int month;
+        int day;
+        int steps;
         System.out.println("Введите номер месяца");
-        try {
-            int month = scanner.nextInt();
-            if (month < 1 || month > 12) {
-                System.out.println("Такого номера месяца нет");
-                return;
+        while (true) {
+            try {
+                month = scanner.nextInt();
+                if (month < 1 || month > 12) {
+                    System.out.println("Такого номера месяца нет. Введите номер месяца от 1 до 12");
+                } else {
+                    break;
+                }
+            } catch (InputMismatchException e) {
+                scanner.next();
+                System.out.println("Номер месяца должен быть введен цифрами от 1 до 12. Введите номер месяца");
             }
-            System.out.println("Введите день от 1 до 30 (включительно)");
-            int day = scanner.nextInt();
-            if (day < 1 || day > 30) {
-                System.out.println("Такого числа нет");
-                return;
-            }
-            System.out.println("Введите количество шагов");
-            int steps = scanner.nextInt();
-            if (steps < 1) {
-                System.out.println("Шагов должно быть больше нуля");
-                return;
-            }
-            MonthData monthData = monthToData[month - 1];
-            monthData.days[day - 1] = steps;
-        } catch (InputMismatchException e) {
-            scanner.next();
-            System.out.println("Введите пожалуйста цифры.");
         }
+        System.out.println("Введите день от 1 до 30 (включительно)");
+        while (true) {
+            try {
+                day = scanner.nextInt();
+                if (day < 1 || day > 30) {
+                    System.out.println("Такого числа в месяце нет. Введите день от 1 до 30 (включительно)");
+                } else {
+                    break;
+                }
+            } catch (InputMismatchException e) {
+                scanner.next();
+                System.out.println("Номер дня должен быть введен цифрами от 1 до 30 (включительно). Введите день.");
+            }
+        }
+        System.out.println("Введите количество шагов");
+        while (true) {
+            try {
+                steps = scanner.nextInt();
+                if (steps < 1) {
+                    System.out.println("Шагов должно быть больше нуля. Введите количество шагов");
+                } else {
+                    break;
+                }
+            } catch (InputMismatchException e) {
+                scanner.next();
+                System.out.println("Количество шагов должно быть введено цифрами. Введите количество шагов");
+            }
+        }
+        MonthData monthData = monthToData[month - 1];
+        monthData.days[day - 1] = steps;
     }
 
     void changeStepGoal() {
         System.out.println("Введите новую цель по количеству шагов.");
-        try {
-            int changeStep = scanner.nextInt();
-            if (changeStep < 1) {
-                System.out.println("Шагов должно быть больше нуля");
-                return;
+        while (true) {
+            try {
+                int changeStep = scanner.nextInt();
+                if (changeStep < 1) {
+                    System.out.println("Шагов должно быть больше нуля. Введите новую цель по количеству шагов.");
+                } else {
+                    goalByStepsPerDay = changeStep;
+                    break;
+                }
+            } catch (InputMismatchException e) {
+                scanner.next();
+                System.out.println("Количество шагов должно быть введено цифрами. Введите новую цель по количеству шагов.");
             }
-            goalByStepsPerDay = changeStep;
-        } catch (InputMismatchException e) {
-            scanner.next();
-            System.out.println("Введите пожалуйста цифры.");
         }
     }
 
     void printStatistic() {
         System.out.println("Введите число месяца");
         MonthData monthData;
-        try {
-            int month = scanner.nextInt();
-            if (month < 1 || month > 12) {
-                System.out.println("Такого месяца нет");
-                return;
+        while (true) {
+            try {
+                int month = scanner.nextInt();
+                if (month < 1 || month > 12) {
+                    System.out.println("Такого номера месяца нет. Введите номер месяца от 1 до 12");
+                } else {
+                    monthData = monthToData[month - 1];
+                    break;
+                }
+            } catch (InputMismatchException e) {
+                scanner.next();
+                System.out.println("Номер месяца должен быть введен цифрами от 1 до 12. Введите номер месяца");
             }
-            monthData = monthToData[month - 1];
-        } catch (InputMismatchException e) {
-            scanner.next();
-            System.out.println("Введите пожалуйста цифры.");
-            return;
         }
         int sumSteps = monthData.sumStepsFromMonth();
         System.out.println("Статистика по дням: ");

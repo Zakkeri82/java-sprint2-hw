@@ -39,6 +39,9 @@ public class MonthData {
                 }
             }
         }
+        if (finalSeries == 0) {
+            finalSeries = currentSeries;
+        }
         return finalSeries;
     }
 

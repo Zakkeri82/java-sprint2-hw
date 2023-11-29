@@ -21,6 +21,7 @@ class Main {
                     stepTracker.printStatistic();
                 } else if (command == 0) {
                     System.out.println("Выход");
+                    scanner.close();
                     break;
                 } else {
                     System.out.println("Извините, такой команды пока нет.");
